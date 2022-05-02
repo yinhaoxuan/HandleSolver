@@ -1,21 +1,15 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 from init import init
 from feedback import get_feedback
 from remove import remove
 from guess import guess
+import random
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    random.seed(44)
     l = init() # init data
+    for l1 in l:
+        if l1[0] == '忐忑不安':
+            print(l1)
     while 1:
         word = guess(l)
         print(word)
@@ -25,5 +19,3 @@ if __name__ == '__main__':
             print(l[0])
             break
 
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

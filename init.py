@@ -9,8 +9,8 @@ def init():
     for x1 in x:
         y = x1.split(":")
         # list1.append((y[0], y[1]))
-        print(y[0])
-        print(y[1])
+        # print(y[0])
+        # print(y[1])
         r = y[1]
         r = r.strip('"')
         z = r.split(" ")
@@ -20,6 +20,7 @@ def init():
         for (i, z1) in enumerate(z):
             lens = len(z1) - 1
             if z1[0] == 'e':
+                c[i].append(" ")
                 c[i].append(z1[0])
                 c[i].append(z1[lens])
                 continue
