@@ -18,13 +18,18 @@ class CharResult:
 
 class IdiomResult:
     def __init__(self):
-        self.result = []
+        self.c_list = []
 
 def get_feedback():
-    result = IdiomResult
+    i_result = IdiomResult()
     for i in range(4):
-        # TODO
         # read result of one char
         # add this result to idiom result
+        c_result = CharResult()
+        c_result.shengmu = int(input())
+        c_result.yunmu = int(input())
+        c_result.yindiao = int(input())
+        c_result.zi = int(input())
+        i_result.c_list.append(c_result)
 
-    return result
+    return i_result
