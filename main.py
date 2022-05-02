@@ -20,7 +20,7 @@ if __name__ == '__main__':
         word = guess(l)
         print(word)
         feedback = get_feedback()
-        l = remove(l, feedback)
+        l = remove(l, feedback, word)
         if len(l) == 1:
             print(l[0])
             break
