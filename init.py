@@ -1,14 +1,14 @@
 import read_text
-
+import idioms
 
 def init():
-    list1 = []
+    polyphones_list = []
 
     x = read_text.s.split(",")
 
     for x1 in x:
         y = x1.split(":")
-        # list1.append((y[0], y[1]))
+        # polyphones_list.append((y[0], y[1]))
         # print(y[0])
         # print(y[1])
         r = y[1]
@@ -41,7 +41,8 @@ def init():
 
         # print(c)
 
-        list1.append((y[0], c))
+        polyphones_list.append((y[0], c))
 
-    # print(list1[0])
-    return list1
+    # print(polyphones_list[0])
+    return polyphones_list
+
