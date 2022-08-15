@@ -1,6 +1,6 @@
-import read_text
-import idioms
-import sounds
+from .read_text import s
+from .idioms import dict
+from .sounds import sounds
 
 # 'yi1'
 def unwrap0(snd):
@@ -85,7 +85,7 @@ def unwrap1(snd):
 def init():
     idiom_list = []
 
-    x = read_text.s.split(",")
+    x = s.split(",")
 
     for x1 in x:
         y = x1.split(":")
@@ -112,7 +112,7 @@ def init():
             # 'lóng' -> ['l', 'ong', '2']
             diction[char] = unwrap1(snd)
 
-    for idiom in idioms.dict:
+    for idiom in dict:
         sound = []
         ok = True
         for char in idiom:

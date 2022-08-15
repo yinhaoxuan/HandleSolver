@@ -1,10 +1,10 @@
 import json
 import random
 
-from feedback import IdiomResult, CharResult
-from guess import guess
-from init import init
-from remove import remove
+from .feedback import IdiomResult, CharResult
+from .guess import guess
+from .init import init
+from .remove import remove
 
 lists = {}
 guesses = {}
