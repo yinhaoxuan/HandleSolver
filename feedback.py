@@ -10,11 +10,12 @@ RIGHT = 1
 OCCUR = 2
 
 class CharResult:
-    def __init__(self):
-        self.shengmu = INIT
-        self.yunmu = INIT
-        self.yindiao = INIT
-        self.zi = INIT
+
+    def __init__(self, shengmu=INIT, yunmu=INIT, yindiao=INIT, zi=INIT):
+        self.shengmu = shengmu
+        self.yunmu = yunmu
+        self.zi = zi
+        self.yindiao = yindiao
 
 class IdiomResult:
     def __init__(self):
