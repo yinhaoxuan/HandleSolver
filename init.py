@@ -106,7 +106,7 @@ def init():
     # 带多音字的成语。已经全部把读音列出来了
 
     diction = {} # 汉字到读音的map
-    for (snd, chars) in sounds.sounds.items():
+    for (snd, chars) in sounds.items():
         for char in chars:
             # 把snd转换成需要的格式
             # 'lóng' -> ['l', 'ong', '2']
