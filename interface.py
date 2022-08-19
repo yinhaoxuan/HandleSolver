@@ -19,24 +19,41 @@ def get_result(clientID):
 
 def put_response(clientID, resp):
     i_result = IdiomResult()
-    for char_result in json.loads(resp):
-        c_result = CharResult(shengmu=char_result['shengmu'], yunmu=char_result['yunmu'],
-                              yindiao=char_result['yindiao'], zi=char_result['zi'])
+    # for char_result in json.loads(resp):
+    for char_result in resp:
+        c_result = CharResult(shengmu=char_result['sm'], yunmu=char_result['ym'],
+                              yindiao=char_result['yd'], zi=char_result['zi'])
         i_result.c_list.append(c_result)
     lists[clientID] = remove(lists[clientID], i_result, guesses[clientID])
+    if len(lists[clientID]) == 0:
+        return 0
+    else:
+        return 1
 
 
 def test():
     # aaa:春暖花开 bbb:兴高采烈
     random.seed(44)
     print('aaa receives the guess: ' + json.dumps(get_result('aaa')))  # 嵬目鸿耳
-    put_response('aaa', json.dumps(
-        [{'shengmu': 0, 'yunmu': 0, 'yindiao': 0, 'zi': 0}, {'shengmu': 0, 'yunmu': 0, 'yindiao': 0, 'zi': 0},
-         {'shengmu': 1, 'yunmu': 0, 'yindiao': 0, 'zi': 0}, {'shengmu': 0, 'yunmu': 0, 'yindiao': 2, 'zi': 0}]))
+    print('aaa is updated: ' + str(put_response('aaa',
+                                                [{'sm': 0, 'ym': 0, 'yd': 0, 'zi': 0},
+                                                 {'sm': 0, 'ym': 0, 'yd': 0, 'zi': 0},
+                                                 {'sm': 1, 'ym': 0, 'yd': 0, 'zi': 0},
+                                                 {'sm': 0, 'ym': 0, 'yd': 2, 'zi': 0}])))
     print('aaa receives the guess: ' + json.dumps(get_result('aaa')))  # 春暖花开
 
     print('bbb receives the guess: ' + json.dumps(get_result('bbb')))  # 载欢载笑
-    put_response('bbb', json.dumps(
-        [{'shengmu': 0, 'yunmu': 2, 'yindiao': 1, 'zi': 0}, {'shengmu': 0, 'yunmu': 0, 'yindiao': 1, 'zi': 0},
-         {'shengmu': 0, 'yunmu': 1, 'yindiao': 2, 'zi': 0}, {'shengmu': 2, 'yunmu': 0, 'yindiao': 1, 'zi': 0}]))
+    print('bbb is updated: ' + str(put_response('bbb',
+                                                [{'sm': 0, 'ym': 2, 'yd': 1, 'zi': 0},
+                                                 {'sm': 0, 'ym': 0, 'yd': 1, 'zi': 0},
+                                                 {'sm': 0, 'ym': 1, 'yd': 2, 'zi': 0},
+                                                 {'sm': 2, 'ym': 0, 'yd': 1, 'zi': 0}])))
     print('bbb receives the guess: ' + json.dumps(get_result('bbb')))  # 兴高采烈
+
+    print('ccc receives the guess: ' + json.dumps(get_result('ccc')))  # 一高二低
+    print('ccc is updated: ' + str(put_response('ccc',
+                                                [{'sm': 0, 'ym': 2, 'yd': 1, 'zi': 1},
+                                                 {'sm': 0, 'ym': 0, 'yd': 1, 'zi': 0},
+                                                 {'sm': 0, 'ym': 1, 'yd': 2, 'zi': 2},
+                                                 {'sm': 2, 'ym': 0, 'yd': 1, 'zi': 1}])))
+    # 没有符合要求的成语
