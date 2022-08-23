@@ -9,17 +9,16 @@ from .remove import remove
 lists = {}
 guesses = {}
 
-
 def get_result(clientID):
-    if clientID not in lists.keys():
-        lists[clientID] = init()
     guesses[clientID] = guess(lists[clientID])
     return guesses[clientID]
 
+def get_start(clientID):
+    lists[clientID] = init()
+    return get_result(clientID)
 
 def put_response(clientID, resp):
     i_result = IdiomResult()
-    # for char_result in json.loads(resp):
     for char_result in resp:
         c_result = CharResult(shengmu=char_result['sm'], yunmu=char_result['ym'],
                               yindiao=char_result['yd'], zi=char_result['zi'])
