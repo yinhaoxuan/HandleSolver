@@ -112,6 +112,7 @@ def init():
             # 'lóng' -> ['l', 'ong', '2']
             diction[char] = unwrap1(snd)
 
+    # 不带多音字的成语。可以知道单独每个字的读音。
     for idiom in dict:
         sound = []
         ok = True
@@ -124,7 +125,7 @@ def init():
                 break
         if ok:
             idiom_list.append((idiom, sound))
-    # 不带多音字的成语。可以知道单独每个字的读音。
+
 
     # print(idiom_list[-1])
     return idiom_list
