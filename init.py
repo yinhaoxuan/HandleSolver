@@ -1,6 +1,6 @@
 from .read_text import s
 from .idioms import dict
-from .sounds import sounds
+from .sounds_full import sounds
 
 # 'yi1'
 def unwrap0(snd):
@@ -107,25 +107,21 @@ def init():
 
     diction = {} # 汉字到读音的map
     for (snd, chars) in sounds.items():
+        first_snd = snd.split(',')[0]
         for char in chars:
             # 把snd转换成需要的格式
             # 'lóng' -> ['l', 'ong', '2']
-            diction[char] = unwrap1(snd)
+            diction[char] = unwrap1(first_snd)
 
     # 不带多音字的成语。可以知道单独每个字的读音。
     for idiom in dict:
         sound = []
-        ok = True
         for char in idiom:
             # print(char)
-            if char in diction.keys():
-                sound.append(diction[char])
-            else:
-                ok = False
-                break
-        if ok:
-            idiom_list.append((idiom, sound))
+            sound.append(diction[char])
+        idiom_list.append((idiom, sound))
 
 
     # print(idiom_list[-1])
+    print(len(idiom_list))
     return idiom_list

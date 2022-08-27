@@ -1,7 +1,7 @@
 # check if the word is still possible with the information from feedback
 def agree(word_to_check, guessed_word, feedback):
-    # if word_to_check[0] == '怨天尤人' and guessed_word[0] == '偷天换日':
-    #     x = 0
+    if word_to_check[0] == '兴高采烈' and guessed_word[0] == '明哲保身':
+        x = 0
     used = set()
     for i in range(4):
         # right
